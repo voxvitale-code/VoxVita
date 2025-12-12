@@ -1,57 +1,248 @@
-/* Modern Healthline-style Design */
+/* --- 1. CSS VARIABLES & DARK MODE --- */
 :root {
-  --primary: #0066cc;
-  --dark: #121212;
-  --light: #f8f9fa;
-  --gray: #666;
+    /* Light Theme (Default) */
+    --color-primary: #007bff; /* Healthline Blue */
+    --color-secondary: #0056b3;
+    --color-background: #ffffff;
+    --color-text: #212529;
+    --color-card-bg: #f8f9fa;
+    --color-border: #e9ecef;
 }
 
-[data-theme="dark"] {
-  --primary: #1e90ff;
-  --light: #1e1e1e;
-  --dark: #000;
-  background-color: #000 !important;
-  color: #e0e0e0 !important;
+body[data-theme="dark"] {
+    /* Dark Theme */
+    --color-primary: #4a90e2;
+    --color-secondary: #64b5f6;
+    --color-background: #121212; /* Darker background */
+    --color-text: #f8f9fa;
+    --color-card-bg: #1e1e1e;
+    --color-border: #333;
 }
 
+/* --- 2. GLOBAL STYLES & LAYOUT --- */
 body {
-  font-family: 'Inter, 'Noto Sans Ethiopic', sans-serif;
-  line-height: 1.8;
-  background-color: var(--light);
-  color: #333;
-  transition: all 0.4s;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    transition: background-color 0.3s, color 0.3s;
 }
 
-h1, h2, h3, h4, h5 {
-  font-family: 'Noto Sans Ethiopic', Inter, sans-serif;
-  font-weight: 700;
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.text-primary { color: var(--primary) !important; }
-.bg-primary { background-color: var(--primary) !important; }
-.btn-danger { background:#d32f2f; border:none; }
-
-.card {
-  transition: transform 0.3s, box-shadow 0.3s;
-  border: none;
-  border-radius: 16px;
-  overflow: hidden;
-}
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15) !important;
-}
-.card-img-top {
-  height: 220px;
-  object-fit: cover;
+h2, h3, h4 {
+    color: var(--color-text);
+    margin-top: 0;
 }
 
-.hover-shadow { box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+/* Buttons */
+.btn {
+    padding: 8px 15px;
+    border: 1px solid var(--color-primary);
+    background-color: var(--color-primary);
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
 
-footer a { color: #4fc3f7; text-decoration: none; }
-footer a:hover { text-decoration: underline; }
+.btn:hover {
+    background-color: var(--color-secondary);
+}
 
-iframe {
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-card-bg);
+}
+
+/* --- 3. HEADER STYLES --- */
+.main-header {
+    background-color: var(--color-card-bg);
+    padding: 15px 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    margin: 0;
+    color: var(--color-primary);
+    font-size: 24px;
+}
+
+.main-nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: var(--color-text);
+    font-weight: 500;
+}
+
+.header-actions button {
+    margin-left: 10px;
+}
+
+/* --- 4. HERO SECTION (Video Feature) --- */
+.hero-section {
+    padding: 40px 0;
+    background-color: var(--color-card-bg);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.hero-section .container {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-image {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    display: block; /* Ensure it doesn't take up extra space */
+}
+
+.hero-content h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+    color: var(--color-primary);
+}
+
+.video-container {
+    flex: 1;
+    max-width: 500px;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.video-container iframe {
+    display: block;
+}
+
+/* --- 5. ARTICLE GRID --- */
+.article-grid-section {
+    padding: 40px 0;
+}
+
+.article-grid-section h3 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.article-card {
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.article-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.category {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: #fff;
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.read-more {
+    display: inline-block;
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+/* --- 6. FOOTER --- */
+.main-footer {
+    background-color: var(--color-text); /* Invert color for contrast */
+    color: var(--color-background);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
+}
+
+/* --- 7. MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+    .main-header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .main-nav {
+        margin: 10px 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main-nav a {
+        margin: 5px 0;
+    }
+
+    .header-actions {
+        margin-top: 10px;
+    }
+    
+    .hero-section .container {
+        flex-direction: column;
+    }
+
+    .hero-content {
+        order: 2; /* Content after video on mobile */
+    }
+
+    .video-container {
+        order: 1;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .article-grid {
+        grid-template-columns: 1fr;
+    }
 }
