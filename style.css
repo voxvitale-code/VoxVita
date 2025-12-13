@@ -256,12 +256,34 @@ nav ul li button:hover {
   width: 160px;
 }
 
+/* ================= DISCLAIMER ================= */
+.disclaimer {
+  padding: 50px 0;
+  text-align: center;
+  background: #f9f9f9;
+  border-top: 1px solid #e5e5e5;
+}
+
+.disclaimer h2 {
+  margin-bottom: 15px;
+  font-size: 1.75rem;
+  color: #0a2a66;
+}
+
+.disclaimer p {
+  font-size: 0.95rem;
+  color: #555;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
 /* ================= FOOTER ================= */
 footer {
   background: #f8f9fa;
   padding: 30px 0;
   text-align: center;
   margin-top: 40px;
+  border-top: 1px solid #e5e5e5;
 }
 
 footer p {
@@ -271,19 +293,22 @@ footer p {
 }
 
 .social-links a {
-  margin: 0 8px;
+  margin: 0 10px;
   text-decoration: none;
   font-weight: 600;
   color: #007bff;
+  transition: color 0.3s, text-decoration 0.3s;
 }
 
 .social-links a:hover {
+  color: #0056b3;
   text-decoration: underline;
 }
 
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
   .hero {
+    flex-direction: column;
     text-align: center;
   }
 
@@ -295,5 +320,22 @@ footer p {
   nav ul {
     flex-wrap: wrap;
     justify-content: center;
+    gap: 8px;
+  }
+
+  .blog-grid {
+    gap: 20px;
+  }
+
+  .videos h2,
+  .blogs h2,
+  .about h2,
+  .contact h2,
+  .disclaimer h2 {
+    font-size: 1.8rem;
+  }
+
+  .contact button {
+    width: 100%;
   }
 }
